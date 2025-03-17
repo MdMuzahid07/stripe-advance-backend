@@ -14,7 +14,7 @@ const LoginValidation = z.object({
     password: z.string(),
 });
 
-export const AuthValidation = {
+export const AuthValidationZod = {
     UserValidationSchema,
     LoginValidation
 };

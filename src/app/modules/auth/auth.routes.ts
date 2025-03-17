@@ -1,20 +1,20 @@
 import express from "express";
 import requestValidator from "../../middlewares/requestValidator";
-import { AuthValidation } from "./auth.validation";
 import { AuthController } from "./auth.controller";
+import { AuthValidationZod } from "./auth.validation";
 
 const router = express.Router();
 
 
 router.post(
     "/signup",
-    requestValidator(AuthValidation.UserValidationSchema),
+    requestValidator(AuthValidationZod.UserValidationSchema),
     AuthController.createUser,
 );
 
 router.post(
     "/login",
-    requestValidator(AuthValidation.LoginValidation),
+    requestValidator(AuthValidationZod.LoginValidation),
     AuthController.LoginUser,
 );
 

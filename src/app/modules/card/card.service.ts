@@ -20,33 +20,6 @@ const saveCardToDB = async (payload) => {
 
 
 
-    const stripeCustomerId = await userUtils.createOrFetchStripeCustomer(
-        user.id,
-        user.email
-    );
-
-    await stripe.paymentMethods.attach(payload?.paymentMethodId, {
-        customer: stripeCustomerId,
-    });
-
-    const paymentMethod = await stripe.paymentMethods.retrieve(payload?.paymentMethodId);
-
-
-
-    const data = {
-        userId: payload?.userId,
-        paymentMethodId: payload?.paymentMethodId,
-        brand: paymentMethod.card?.brand || "",
-        last4: paymentMethod.card?.last4 || "",
-    };
-
-
-
-
-
-
-
-
 
 };
 
