@@ -1,6 +1,7 @@
 import express from "express";
 import { AuthRoutes } from "../modules/auth/auth.routes";
 import { CardRoutes } from "../modules/card/card.routes";
+import { DepositRoutes } from "../modules/deposit/deposit.routes";
 
 
 
@@ -15,6 +16,10 @@ const moduleRoutes = [
     {
         path: "/card",
         route: CardRoutes
+    },
+    {
+        path: "/deposit",
+        route: DepositRoutes
     }
 ];
 
