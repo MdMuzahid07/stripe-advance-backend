@@ -14,7 +14,7 @@ function globalErrorHandler(
 ) {
   let statusCode = error.statusCode || 500;
   let message = error.message || "Something went wrong!";
-
+  console.log(error);
   let errorSources: TErrorSources = [
     {
       path: "",

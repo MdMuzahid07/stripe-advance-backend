@@ -14,4 +14,12 @@ router.post(
 
 
 
+router.get(
+    "/",
+    authValidation("user"),
+    cardController.getCards,
+);
+
+
+
 export const CardRoutes = router;

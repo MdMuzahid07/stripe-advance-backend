@@ -3,13 +3,12 @@ import CustomAppError from "../errors/CustomAppError";
 import httpStatus from "http-status";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../config";
-import { TUserRole } from "../modules/auth/auth.interface";
+import { TUserRole } from "../utils/auth.interface";
 
 const authValidation = (...requiredRoles: TUserRole[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const splitTokenWithBearer = req.headers.authorization;
-      const token = splitTokenWithBearer?.split(" ", 2)?.[1];
+      const token = req.cookies?.accessToken;
 
       if (!token) {
         throw new CustomAppError(

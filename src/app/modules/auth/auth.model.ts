@@ -26,10 +26,15 @@ const UserSchema = new mongoose.Schema<TUser>(
             enum: ["admin", "user"],
             default: "user"
         },
+        stripeCustomerId: {
+            type: String,
+            default: ""
+        },
         isDeleted: {
             type: Boolean,
             default: false,
         },
+
     },
     {
         timestamps: true,

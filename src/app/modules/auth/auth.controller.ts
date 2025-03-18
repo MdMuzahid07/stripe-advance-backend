@@ -12,6 +12,15 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
         res.cookie("refreshToken", refreshToken, {
             secure: config.NODE_ENV === "production",
             httpOnly: true,
+            sameSite: config.NODE_ENV === "production" ? "none" : "strict",
+            maxAge: 1000 * 24 * 60 * 60 * 30
+        });
+
+        res.cookie("accessToken", accessToken, {
+            secure: config.NODE_ENV === "production",
+            httpOnly: true,
+            sameSite: config.NODE_ENV === "production" ? "none" : "strict",
+            maxAge: 1000 * 60 * 60
         });
 
 
@@ -38,7 +47,17 @@ const LoginUser = async (req: Request, res: Response, next: NextFunction) => {
         res.cookie("refreshToken", refreshToken, {
             secure: config.NODE_ENV === "production",
             httpOnly: true,
+            sameSite: config.NODE_ENV === "production" ? "none" : "strict",
+            maxAge: 1000 * 24 * 60 * 60 * 30
         });
+
+        res.cookie("accessToken", accessToken, {
+            secure: config.NODE_ENV === "production",
+            httpOnly: true,
+            sameSite: config.NODE_ENV === "production" ? "none" : "strict",
+            maxAge: 1000 * 60 * 60
+        });
+
 
         res.status(httpStatus.OK).json({
             success: true,
